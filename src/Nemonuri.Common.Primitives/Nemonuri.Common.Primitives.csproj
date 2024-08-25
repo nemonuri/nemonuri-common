@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <ProjectReference Include="..\Nemonuri.Common.Primitives.NetStandard\Nemonuri.Common.Primitives.NetStandard.csproj" 
+                      PrivateAssets="all" />
+  </ItemGroup>
+
+  <Import Project="../Directory.Pack.props" />
+
+  <PropertyGroup Label="Package Metadata">
+    <PackageVersion>0.0.1</PackageVersion>
+  </PropertyGroup>
+
+  <!-- Reference: https://github.com/NuGet/Home/issues/3891#issuecomment-330668337 -->
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2POutput</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <Target Name="IncludeP2POutput">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)Nemonuri.Common.Primitives.NetStandard.dll" 
+                            Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    </ItemGroup>
+  </Target>
+
+</Project>
