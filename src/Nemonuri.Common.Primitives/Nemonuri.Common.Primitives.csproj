@@ -12,8 +12,11 @@
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <ProjectReference Include="..\Nemonuri.Common.Primitives.NetStandard\Nemonuri.Common.Primitives.NetStandard.csproj" 
-                      PrivateAssets="all" />
+    <ProjectReference Include="..\Nemonuri.Common.Primitives.NetStandard\Nemonuri.Common.Primitives.NetStandard.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
   </ItemGroup>
 
   <Import Project="../Directory.Pack.props" />
@@ -22,6 +25,7 @@
     <PackageVersion>0.0.1</PackageVersion>
   </PropertyGroup>
 
+  <!--#region IncludeP2POutput -->
   <!-- Reference: https://github.com/NuGet/Home/issues/3891#issuecomment-330668337 -->
   <PropertyGroup>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2POutput</TargetsForTfmSpecificBuildOutput>
@@ -29,9 +33,9 @@
 
   <Target Name="IncludeP2POutput">
     <ItemGroup>
-      <BuildOutputInPackage Include="$(OutputPath)Nemonuri.Common.Primitives.NetStandard.dll" 
-                            Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+      <BuildOutputInPackage Include="$(OutputPath)Nemonuri.Common.Primitives.NetStandard.dll" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
     </ItemGroup>
   </Target>
+  <!--#endregion IncludeP2POutput -->
 
 </Project>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemonuri.Common.Primitives"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemonuri.Common.Primitives.NetStandard", "Nemonuri.Common.Primitives.NetStandard\Nemonuri.Common.Primitives.NetStandard.csproj", "{1E0F7E21-9667-45CF-8797-7FFF174407AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemonuri.Common.Primitives.Test", "..\tests\Nemonuri.Common.Primitives.Test\Nemonuri.Common.Primitives.Test.csproj", "{C5EE335B-A423-4668-9E7A-1F222C921128}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1E0F7E21-9667-45CF-8797-7FFF174407AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E0F7E21-9667-45CF-8797-7FFF174407AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E0F7E21-9667-45CF-8797-7FFF174407AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5EE335B-A423-4668-9E7A-1F222C921128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5EE335B-A423-4668-9E7A-1F222C921128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5EE335B-A423-4668-9E7A-1F222C921128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5EE335B-A423-4668-9E7A-1F222C921128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
