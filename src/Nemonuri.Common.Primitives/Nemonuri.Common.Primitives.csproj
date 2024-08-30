@@ -22,7 +22,8 @@
   <Import Project="../Directory.Pack.props" />
 
   <PropertyGroup Label="Package Metadata">
-    <PackageVersion>0.0.1</PackageVersion>
+    <Version>0.0.2</Version>
+    <PackageVersion>0.0.2</PackageVersion>
   </PropertyGroup>
 
   <!--#region IncludeP2POutput -->
