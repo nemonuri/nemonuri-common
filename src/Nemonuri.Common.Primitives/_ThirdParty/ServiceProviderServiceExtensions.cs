@@ -8,7 +8,7 @@ The .NET Foundation licenses this file to you under the MIT license.
 
 namespace Nemonuri.Common.Primitives;
 
-public static class ServiceProviderServiceExtensions
+partial class ServiceProviderServiceExtensions
 {
     public static T? GetService<T>(this IServiceProvider provider)
     {
