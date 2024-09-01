@@ -1,4 +1,4 @@
-namespace Nemonuri.Common.Primitives;
+namespace Nemonuri;
 
 public class DefaultProvider<T> : IProvider<T>
 {
