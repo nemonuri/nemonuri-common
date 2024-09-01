@@ -1,4 +1,4 @@
-﻿namespace Nemonuri.Common.Primitives;
+﻿namespace Nemonuri.Primitives;
 
 public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TItemList>
     where TItemList : IReadOnlyList<TItem>
