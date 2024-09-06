@@ -10,4 +10,6 @@ public class DefaultProvider<T> : IProvider<T>
     }
 
     public T Get() => _value;
+
+    object IProvider.Get() => Get()!;
 }
