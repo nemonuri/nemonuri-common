@@ -1,4 +1,4 @@
-namespace Nemonuri.Primitives;
+namespace Nemonuri.Infrastructure;
 
 public static partial class ServiceProviderServiceExtensions
 {

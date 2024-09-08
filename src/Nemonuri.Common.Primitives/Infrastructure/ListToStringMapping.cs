@@ -1,4 +1,4 @@
-namespace Nemonuri.Primitives;
+namespace Nemonuri.Infrastructure;
 
 public class ListToStringMapping<TItemList, TItem> where TItemList : IReadOnlyList<TItem>
 {
