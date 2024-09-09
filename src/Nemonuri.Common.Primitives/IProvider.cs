@@ -2,10 +2,10 @@ namespace Nemonuri;
 
 public interface IProvider
 {
-    object Get();
+    object? Get();
 }
 
 public interface IProvider<T> : IProvider
 {
-    new T Get();
+    new T? Get();
 }

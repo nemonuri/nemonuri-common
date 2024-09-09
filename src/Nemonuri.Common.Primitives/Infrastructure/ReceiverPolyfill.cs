@@ -6,11 +6,10 @@ public static class ReceiverPolyfill
     (
         IReceiver<T> source,
         object? provider, object received,
-        Action<object?, object>? fallback = null
+        Action<object?, object?>? fallback = null
     )
     {
         Guard.IsNotNull(source);
-        Guard.IsNotNull(received);
 
         if (received is T vT)
         {
