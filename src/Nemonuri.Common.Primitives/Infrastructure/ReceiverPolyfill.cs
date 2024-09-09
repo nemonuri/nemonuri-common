@@ -5,7 +5,7 @@ public static class ReceiverPolyfill
     public static void PolyfillOnReceived<T>
     (
         IReceiver<T> source,
-        object? provider, object received,
+        object? provider, object? received,
         Action<object?, object?>? fallback = null
     )
     {
@@ -14,6 +14,10 @@ public static class ReceiverPolyfill
         if (received is T vT)
         {
             source.OnReceived(provider, vT);
+        }
+        else if (received is null)
+        {
+            source.OnReceived(provider, default(T));
         }
         else if (fallback != null)
         {
