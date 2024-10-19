@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Package Metadata">
-    <Version>0.0.212</Version>
+    <Version>0.0.213</Version>
   </PropertyGroup>
 
   <Import Project="../Directory.Pack.props" />

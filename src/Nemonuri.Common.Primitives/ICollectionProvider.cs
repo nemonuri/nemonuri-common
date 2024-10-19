@@ -2,12 +2,7 @@ using System.Collections;
 
 namespace Nemonuri;
 
-public interface ICollectionProvider
+public interface ICollectionProvider<T> : IServiceProvider
 {
-    IEnumerable GetCollection();
-}
-
-public interface ICollectionProvider<T> : ICollectionProvider
-{
-    new IEnumerable<T> GetCollection();
+    IEnumerable<T> GetCollection();
 }

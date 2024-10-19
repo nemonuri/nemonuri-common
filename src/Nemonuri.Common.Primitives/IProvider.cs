@@ -1,11 +1,6 @@
 namespace Nemonuri;
 
-public interface IProvider
+public interface IProvider<T> : IServiceProvider
 {
-    object? Get();
-}
-
-public interface IProvider<T> : IProvider
-{
-    new T? Get();
+    T? Get();
 }
