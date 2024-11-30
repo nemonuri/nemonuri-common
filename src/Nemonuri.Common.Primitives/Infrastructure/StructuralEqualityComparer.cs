@@ -6,7 +6,15 @@ public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TI
     private readonly static StructuralEqualityComparer<TItemList, TItem> s_default = new ();
     public static StructuralEqualityComparer<TItemList, TItem> Default => s_default;
 
-    public StructuralEqualityComparer() {}
+    private readonly IEqualityComparer<TItem> _equalityComparer;
+
+    public StructuralEqualityComparer(IEqualityComparer<TItem>? equalityComparer) 
+    {
+        _equalityComparer = equalityComparer ?? EqualityComparer<TItem>.Default;
+    }
+
+    public StructuralEqualityComparer() : this(null)
+    {}
 
     public bool Equals(TItemList? x, TItemList? y)
     {
@@ -17,7 +25,7 @@ public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TI
         int i=0;
         foreach (TItem item in x)
         {
-            bool isEqual = item?.Equals(y[i]) ?? false;
+            bool isEqual = _equalityComparer.Equals(item, y[i]);
             if (!isEqual) {return false;}
             i++;
         }
@@ -29,7 +37,7 @@ public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TI
     {
         HashCode hashCode = new ();
         hashCode = obj.Aggregate(hashCode, (gseed, item) => {
-            gseed.Add(item);
+            gseed.Add(item, _equalityComparer);
             return gseed;
         });
         return hashCode.ToHashCode();
