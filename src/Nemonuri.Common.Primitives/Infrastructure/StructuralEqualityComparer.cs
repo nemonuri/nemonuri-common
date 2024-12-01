@@ -1,42 +1,23 @@
 ﻿namespace Nemonuri.Infrastructure;
 
-public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TItemList>
-    where TItemList : IReadOnlyList<TItem>
+public class StructuralEqualityComparer<T, TList> : IEqualityComparer<TList>
+    where TList : IReadOnlyList<T>
 {
-    private readonly static StructuralEqualityComparer<TItemList, TItem> s_default = new ();
-    public static StructuralEqualityComparer<TItemList, TItem> Default => s_default;
+    private readonly IEqualityComparer<T>? _innerEqualityComparer;
 
-    private readonly IEqualityComparer<TItem> _equalityComparer;
-
-    public StructuralEqualityComparer(IEqualityComparer<TItem>? equalityComparer) 
+    public StructuralEqualityComparer(IEqualityComparer<T>? innerEqualityComparer = null) 
     {
-        _equalityComparer = equalityComparer ?? EqualityComparer<TItem>.Default;
+        _innerEqualityComparer = innerEqualityComparer;
     }
 
-    public StructuralEqualityComparer() : this(null)
-    {}
+    public IEqualityComparer<T>? InnerEqualityComparer => _innerEqualityComparer;
 
-    public bool Equals(TItemList? x, TItemList? y)
-    {
-        if (x == null || y == null) {return false;}
+    public bool Equals(TList? left, TList? right) => StructuralEqualityTheory.StructuralEquals(left, right, _innerEqualityComparer);
 
-        if (x.Count != y.Count) {return false;}
-
-        int i=0;
-        foreach (TItem item in x)
-        {
-            bool isEqual = _equalityComparer.Equals(item, y[i]);
-            if (!isEqual) {return false;}
-            i++;
-        }
-
-        return true;
-    }
-
-    public int GetHashCode([DisallowNull] TItemList obj)
+    public int GetHashCode([DisallowNull] TList obj)
     {
         HashCode hashCode = new ();
-        HashCodeTheory.AggregateHashCode(ref hashCode, obj, _equalityComparer);
+        StructuralEqualityTheory.AggregateHashCode(ref hashCode, obj, _innerEqualityComparer);
         return hashCode.ToHashCode();
     }
 }
