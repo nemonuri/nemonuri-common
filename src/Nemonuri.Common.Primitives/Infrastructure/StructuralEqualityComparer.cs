@@ -36,10 +36,7 @@ public class StructuralEqualityComparer<TItemList, TItem> : IEqualityComparer<TI
     public int GetHashCode([DisallowNull] TItemList obj)
     {
         HashCode hashCode = new ();
-        hashCode = obj.Aggregate(hashCode, (gseed, item) => {
-            gseed.Add(item, _equalityComparer);
-            return gseed;
-        });
+        HashCodeTheory.AggregateHashCode(ref hashCode, obj, _equalityComparer);
         return hashCode.ToHashCode();
     }
 }
